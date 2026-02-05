@@ -1,0 +1,221 @@
+/**
+ * Custom styles for Wenfit Validator documentation
+ */
+
+/* ===== Color Palette ===== */
+:root {
+    --vp-c-brand-1: #646cff;
+    --vp-c-brand-2: #747bff;
+    --vp-c-brand-3: #535bf2;
+    --vp-c-brand-soft: rgba(100, 108, 255, 0.14);
+
+    --vp-home-hero-name-color: transparent;
+    --vp-home-hero-name-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    --vp-home-hero-image-background-image: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    --vp-home-hero-image-filter: blur(44px);
+}
+
+.dark {
+    --vp-c-brand-1: #747bff;
+    --vp-c-brand-2: #646cff;
+    --vp-c-brand-3: #535bf2;
+    --vp-c-brand-soft: rgba(116, 123, 255, 0.16);
+}
+
+/* ===== Hero Section ===== */
+.VPHero .name {
+    font-size: 64px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+}
+
+.VPHero .tagline {
+    font-size: 24px !important;
+    line-height: 1.5 !important;
+    opacity: 0.9;
+}
+
+.VPHero .actions {
+    padding-top: 32px;
+}
+
+.VPButton {
+    border-radius: 12px !important;
+    padding: 12px 32px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.VPButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(100, 108, 255, 0.3);
+}
+
+/* ===== Feature Cards ===== */
+.VPFeature {
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid var(--vp-c-divider) !important;
+}
+
+.VPFeature:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    border-color: var(--vp-c-brand-1) !important;
+}
+
+.VPFeature .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+/* ===== Code Blocks ===== */
+div[class*='language-'] {
+    border-radius: 12px !important;
+    margin: 24px 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+div[class*='language-']:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.vp-code-group {
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+/* ===== Custom Containers ===== */
+.custom-block {
+    border-radius: 12px !important;
+    border-left-width: 4px !important;
+    padding: 16px 20px !important;
+    margin: 24px 0 !important;
+}
+
+.custom-block.tip {
+    background: linear-gradient(135deg, rgba(66, 184, 131, 0.1) 0%, rgba(66, 184, 131, 0.05) 100%);
+}
+
+.custom-block.warning {
+    background: linear-gradient(135deg, rgba(255, 197, 61, 0.1) 0%, rgba(255, 197, 61, 0.05) 100%);
+}
+
+.custom-block.danger {
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1) 0%, rgba(244, 63, 94, 0.05) 100%);
+}
+
+/* ===== Sidebar ===== */
+.VPSidebar {
+    border-right: 1px solid var(--vp-c-divider);
+}
+
+.VPSidebarItem.level-0 .text {
+    font-weight: 600;
+}
+
+.VPSidebarItem.is-active>.item>.link {
+    background: var(--vp-c-brand-soft);
+    border-radius: 8px;
+}
+
+/* ===== Navigation ===== */
+.VPNav {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.dark .VPNav {
+    background: rgba(26, 26, 26, 0.9);
+}
+
+/* ===== Tables ===== */
+table {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+    background: var(--vp-c-brand-soft);
+}
+
+/* ===== Links ===== */
+.vp-doc a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--vp-c-brand-1);
+    transition: all 0.2s ease;
+}
+
+.vp-doc a:hover {
+    color: var(--vp-c-brand-1);
+    border-bottom-width: 2px;
+}
+
+/* ===== Badges ===== */
+.vp-badge {
+    border-radius: 6px !important;
+    padding: 2px 8px !important;
+    font-weight: 600 !important;
+    font-size: 12px !important;
+}
+
+/* ===== Search ===== */
+.DocSearch-Button {
+    border-radius: 12px !important;
+    transition: all 0.3s ease !important;
+}
+
+.DocSearch-Button:hover {
+    box-shadow: 0 4px 12px rgba(100, 108, 255, 0.2);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.VPFeature,
+.custom-block,
+div[class*='language-'] {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--vp-c-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--vp-c-brand-1);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--vp-c-brand-2);
+}
+
+/* ===== Mobile Responsiveness ===== */
+@media (max-width: 768px) {
+    .VPHero .name {
+        font-size: 48px !important;
+    }
+
+    .VPHero .tagline {
+        font-size: 18px !important;
+    }
+}
