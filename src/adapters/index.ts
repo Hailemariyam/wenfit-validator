@@ -44,3 +44,21 @@ export {
     ValidateParams,
     type ValidateOptions,
 } from './express.js';
+
+// ============================================================================
+// NestJS Adapter
+// ============================================================================
+
+export {
+    ValidationPipe as NestValidationPipe,
+    BodyValidationPipe,
+    QueryValidationPipe,
+    ParamValidationPipe,
+    ValidationGuard,
+    createValidationPipe,
+    createBodyValidationPipe,
+    createQueryValidationPipe,
+    createParamValidationPipe,
+    createValidationGuard,
+    ValidationExceptionFilter,
+} from './nestjs.js';
