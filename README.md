@@ -1,7 +1,7 @@
 # 🚀 Wenfit Validator
 
 > **Universal, type-safe validation for TypeScript/JavaScript**
-> Define once, validate everywhere - React, Vue, Angular, Express, NestJS
+> Define once, validate everywhere - React, Vue, Angular, NestJS, Express
 
 [![npm version](https://img.shields.io/npm/v/wenfit-validator.svg)](https://www.npmjs.com/package/wenfit-validator)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/wenfit-validator)](https://bundlephobia.com/package/wenfit-validator)
@@ -14,7 +14,7 @@
 - 🌍 **Universal**: One schema works across frontend and backend
 - ⚡ **Fast**: Validates simple schemas in < 0.01ms
 - 📦 **Tiny**: Core bundle only 7.7KB gzipped
-- 🔌 **Framework Ready**: Built-in adapters for React, Vue, Angular, Express
+- 🔌 **Framework Ready**: Built-in adapters for React, Vue, Angular, NestJS, Express
 - 🎨 **Developer Friendly**: Fluent API with excellent IntelliSense
 - 🧪 **Battle Tested**: 279 tests with property-based testing
 
@@ -126,35 +126,23 @@ const addressSchema = object({
 // Arrays
 const tagsSchema = array(string())
   .min(1)
-  .max
+  .max(10);
 
-## Core Concepts
+// Unions
+const idSchema = union([string(), number()]);
 
-### Schema Definition
+// Intersections
+const timestampedUser = intersection([
+  userSchema,
+  object({ createdAt: date(), updatedAt: date() })
+]);
+```
+
+### Transformations
 
 ```typescript
-import { string, number, boolean, date, object, array } from 'wenfit-validator';
-
-// Primitives
-const name = string().min(1).max(100);
-const age = number().int().min(0).max(120);
-const active = boolean();
-const birthDate = date().max(new Date());
-
-// Objects
-const user = object({
-  name: string(),
-  email: string().email(),
-  profile: object({
-    bio: string().optional(),
-    website: string().url().optional(),
-  }),
-});
-
-// Arrays
-const tags = array(string().min(1)).max(10);
-```
-).trim(),
+const userSchema = object({
+  email: string().email().toLowerCase().trim(),
   age: string().transform(parseInt),
   tags: array(string()).transform(tags => tags.map(t => t.toUpperCase()))
 });
@@ -300,6 +288,8 @@ const handleSubmit = async () => {
 
 ### Express/NestJS
 
+**Express:**
+
 ```typescript
 import express from 'express';
 import { validate } from 'wenfit-validator/adapters/express';
@@ -333,6 +323,28 @@ app.get('/search',
     res.json({ results: search(q) });
   }
 );
+```
+
+**NestJS:**
+
+```typescript
+import { Controller, Post, Body } from '@nestjs/common';
+import { BodyValidationPipe } from 'wenfit-validator/adapters/nestjs';
+import { object, string, number } from 'wenfit-validator';
+
+const userSchema = object({
+  name: string().min(2),
+  email: string().email(),
+  age: number().min(18)
+});
+
+@Controller('users')
+export class UsersController {
+  @Post()
+  createUser(@Body(new BodyValidationPipe(userSchema)) userData: any) {
+    return { message: 'User created', user: userData };
+  }
+}
 ```
 
 ### Angular
@@ -516,6 +528,7 @@ Wenfit Validator is optimized for speed:
 - [React Integration](./docs/integration/react.md)
 - [Vue Integration](./docs/integration/vue.md)
 - [Angular Integration](./docs/integration/angular.md)
+- [NestJS Integration](./docs/integration/nestjs.md)
 - [Express Integration](./docs/integration/express.md)
 - [Examples](./examples/)
 
@@ -529,7 +542,7 @@ MIT © Wenfit Team
 
 ## 🌟 Show Your Support
 
-If you find Wenfit Validator helpful, please give it a ⭐️ on [GitHub](https://github.com/yourusername/wenfit-validator)!
+If you find Wenfit Validator helpful, please give it a ⭐️ on [GitHub](https://github.com/Hailemariyam/wenfit-validator)!
 
 ---
 

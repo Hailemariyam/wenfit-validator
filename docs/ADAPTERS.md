@@ -427,24 +427,29 @@ app.post(
 
 ### NestJS Usage
 
+For NestJS, use the dedicated NestJS adapter with pipes and guards:
+
 ```typescript
 import { Controller, Post, Body } from '@nestjs/common';
-import { validate } from 'wenfit-validator/adapters/express';
+import { BodyValidationPipe } from 'wenfit-validator/adapters/nestjs';
+import { object, string, number } from 'wenfit-validator';
+
+const createUserSchema = object({
+    username: string().min(3),
+    email: string().email(),
+    password: string().min(8),
+});
 
 @Controller('users')
 export class UsersController {
     @Post()
-    async create(@Body() body: any) {
-        const result = createUserSchema.safeParse(body);
-
-        if (!result.success) {
-            throw new BadRequestException(result.errors);
-        }
-
-        return this.usersService.create(result.data);
+    async create(@Body(new BodyValidationPipe(createUserSchema)) body: any) {
+        return this.usersService.create(body);
     }
 }
 ```
+
+See the [NestJS Integration Guide](./integration/nestjs.md) for more details.
 
 ## Cross-Framework Schema Sharing
 
