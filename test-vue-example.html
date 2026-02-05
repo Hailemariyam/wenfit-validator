@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Validator Test</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .registration-form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group input.error {
+            border-color: #dc3545;
+        }
+        .error-message {
+            display: block;
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .error-summary {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .error-summary h4 {
+            margin-top: 0;
+            color: #721c24;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        button[type="submit"]:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+        .status {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="status">
+            <strong>✓ Vue Example Test Environment</strong>
+            <p>This tests the Vue validation composable logic. Fill out the form to test validation.</p>
+        </div>
+
+        <form @submit.prevent="handleSubmit" class="registration-form">
+            <h2>Create Account</h2>
+
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input
+                    id="username"
+                    v-model="formData.username"
+                    type="text"
+                    :class="{ error: getFieldError('username') }"
+                />
+                <span v-if="getFieldError('username')" class="error-message">
+                    {{ getFieldError('username') }}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    id="email"
+                    v-model="formData.email"
+                    type="email"
+                    :class="{ error: getFieldError('email') }"
+                />
+                <span v-if="getFieldError('email')" class="error-message">
+                    {{ getFieldError('email') }}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    id="password"
+                    v-model="formData.password"
+                    type="password"
+                    :class="{ error: getFielgetFieldError('confirmPassword') }"
+                />
+                <span v-if="getFieldError('confirmPassword')" class="error-message">
+                    {{ getFieldError('confirmPassword') }}
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input
+                    id="age"
+                    v-model.number="formData.age"
+                    type="number"
+                    :class="{ error: getFieldError('age') }"
+                />
+                <span v-if="getFieldError('age')" class="error-message">
+                    {{ getFieldError('age') }}
+                </span>
+            </div>
+
+            <div class="form-group checkbox">
+                <label>
+                    <input
+                        v-model="formData.acceptTerms"
+                        type="checkbox"
+                    />
+                    I accept the terms and conditions
+                </label>
+                <span v-if="getFieldError('acceptTerms')" class="error-message">
+                    {{ getFieldError('acceptTerms') }}
+                </span>
+            </div>
+
+            <button type="submit" :disabled="isValidating">
+                {{ isValidating ? 'Validating...' : 'Register' }}
+            </button>
+
+            <div v-if="errors.length > 0" class="error-summary">
+                <h4>Please fix the following errors:</h4>
+                <ul>
+                    <li v-for="(error, index) in errors" :key="index">
+                        {{ error.message }}
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+
+    <script type="module">
+        import { string, number, boolean, object } from './dist/index.js';
+        import { useValidation } from './dist/adapters/vue.js';
+
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                // Define the validation schema
+                const registrationSchema = object({
+                    username: string()
+                        .min(3, 'Username must be at least 3 characters')
+                        .max(20, 'Username cannot exceed 20 characters')
+                        .pattern(/^[a-zA-Z0-9_]+$/, 'Username can only contain letters, numbers, and underscores'),
+
+                    email: string()
+                        .email('Please enter a valid email address'),
+
+                    password: string()
+                        .min(8, 'Password must be at least 8 characters')
+                        .refine(
+                            (val) => /[A-Z]/.test(val) && /[a-z]/.test(val) && /[0-9]/.test(val),
+                            'Password must contain uppercase, lowercase, and a number'
+                        ),
+
+                    confirmPassword: string(),
+
+                    age: number()
+                        .int('Age must be a whole number')
+                        .min(18, 'You must be at least 18 years old')
+                        .max(120, 'Please enter a valid age'),
+
+                    acceptTerms: boolean()
+                        .refine((val) => val, 'You must accept the terms and conditions'),
+                }).refine(
+                    (data) => data.password === data.confirmPassword,
+                    'Passwords must match'
+                );
+
+                // Form data
+                const formData = ref({
+                    username: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                    age: undefined,
+                    acceptTerms: false,
+                });
+
+                // Initialize validation composable
+                const { validate, errors, isValidating, getFieldError, clearErrors } =
+                    useValidation({ schema: registrationSchema });
+
+                // Helper to get field error message
+                const getFieldErrorMessage = (field) => {
+                    const error = getFieldError(field).value;
+                    return error ? error.message : null;
+                };
+
+                // Handle form submission
+                const handleSubmit = async () => {
+                    const result = await validate(formData.value);
+
+                    if (result.success) {
+                        console.log('Form submitted successfully:', result.data);
+                        alert('Registration successful!');
+                        clearErrors();
+
+                        // Reset form
+                        formData.value = {
+                            username: '',
+                            email: '',
+                            password: '',
+                            confirmPassword: '',
+                            age: undefined,
+                            acceptTerms: false,
+                        };
+                    } else {
+                        console.error('Validation errors:', result.errors);
+                    }
+                };
+
+                return {
+                    formData,
+                    errors,
+                    isValidating,
+                    getFieldError: getFieldErrorMessage,
+                    handleSubmit,
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+# Source files
+src/
+tests/
+scripts/
+
+# Config files
+.eslintrc.json
+.prettierrc.json
+.prettierignore
+tsconfig.json
+tsup.config.ts
+vitest.config.ts
+
+# Development files
+.kiro/
+.vscode/
+test-vue/
+docs-site/
+
+# Build artifacts
+*.log
+*.tsbuildinfo
+coverage/
+.nyc_output/
+
+# Git
+.git/
+.gitignore
+
+# Documentation (keep only essential)
+BUILD_SUMMARY.md
+DOCUMENTATION_DEPLOYMENT_SUMMARY.md
+SETUP.md
+VUE_EXAMPLE_TEST_RESULTS.md
+deploy-docs.sh
+
+# Test files
+test-vue-adapter.js
+test-vue-browser.html
+test-vue-example.html
+
+# Keep these
+!dist/
+!README.md
+!LICENSE
+!CHANGELOG.md
+!package.json
