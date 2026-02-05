@@ -110,4 +110,4 @@ All 25 requirements from the specification implemented:
 
 ---
 
-[1.0.0]: https://github.com/yourusername/wenfit-validator/releases/tag/v1.0.0
+[1.0.0]: https://github.com/Hailemariyam/wenfit-validator/releases/tag/v1.0.0

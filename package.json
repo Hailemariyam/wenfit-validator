@@ -72,12 +72,16 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/yourusername/wenfit-validator.git"
+        "url": "https://github.com/Hailemariyam/wenfit-validator.git"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/Hailemariyam"
     },
     "bugs": {
-        "url": "https://github.com/yourusername/wenfit-validator/issues"
+        "url": "https://github.com/Hailemariyam/wenfit-validator/issues"
     },
-    "homepage": "https://github.com/yourusername/wenfit-validator#readme",
+    "homepage": "https://github.com/Hailemariyam/wenfit-validator#readme",
     "devDependencies": {
         "@angular/common": "^18.2.14",
         "@angular/core": "^18.2.14",

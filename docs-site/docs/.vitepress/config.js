@@ -31,6 +31,7 @@ export default defineConfig({
                     { text: 'React', link: '/integration/react' },
                     { text: 'Vue', link: '/integration/vue' },
                     { text: 'Angular', link: '/integration/angular' },
+                    { text: 'NestJS', link: '/integration/nestjs' },
                     { text: 'Express', link: '/integration/express' }
                 ]
             },
@@ -76,6 +77,7 @@ export default defineConfig({
                     { text: '⚛️ React', link: '/integration/react' },
                     { text: '💚 Vue', link: '/integration/vue' },
                     { text: '🅰️ Angular', link: '/integration/angular' },
+                    { text: '🐈 NestJS', link: '/integration/nestjs' },
                     { text: '🚂 Express', link: '/integration/express' }
                 ]
             }

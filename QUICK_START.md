@@ -124,7 +124,6 @@ app.listen(3000);
 
 ### 5. Vue 3 Form
 
-```vue
 <script setup>
 import { reactive } from 'vue';
 import { useValidation } from 'wenfit-validator/adapters/vue';
@@ -155,7 +154,14 @@ const handleSubmit = async () => {
 <template>
   <form @submit.prevent="handleSubmit">
     <input v-model="form.name" placeholder="Name" />
-    <span v-if="getFiechema = string().email();
+    <span v-if="getFieldError('name')">{{ getFieldError('name').message }}</span>
+    <input v-model="form.email" placeholder="Email" />
+    <span v-if="getFieldError('email')">{{ getFieldError('email').message }}</span>
+    <input v-model="form.age" type="number" placeholder="Age" />
+    <span v-if="getFieldError('age')">{{ getFieldError('age').message }}</span>
+    <button type="submit">Submit</button>
+  </form>
+</template>
 ```
 
 ### Password with Requirements
@@ -249,8 +255,8 @@ const userSchema = object({
 ## 🆘 Need Help?
 
 - 📖 [Documentation](./docs/README.md)
-- 💬 [GitHub Discussions](https://github.com/yourusername/wenfit-validator/discussions)
-- 🐛 [Report Issues](https://github.com/yourusername/wenfit-validator/issues)
+- 💬 [GitHub Discussions](https://github.com/Hailemariyam/wenfit-validator/discussions)
+- 🐛 [Report Issues](https://github.com/Hailemariyam/wenfit-validator/issues)
 
 ---
 

@@ -107,7 +107,7 @@ node -e "const { string, object } = require('wenfit-validator'); console.log('âœ
 ```
 
 ### 3. Create GitHub Release
-1. Go to: https://github.com/yourusername/wenfit-validator/releases
+1. Go to: https://github.com/Hailemariyam/wenfit-validator/releases
 2. Click "Create a new release"
 3. Tag: `v1.0.0`
 4. Title: `v1.0.0 - Initial Release`
@@ -267,7 +267,7 @@ npm view wenfit-validator
 npm install wenfit-validator
 
 # Create GitHub release
-# Visit: https://github.com/yourusername/wenfit-validator/releases/new
+# Visit: https://github.com/Hailemariyam/wenfit-validator/releases/new
 ```
 
 ---

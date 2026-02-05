@@ -15,7 +15,7 @@ Thank you for your interest in contributing to Wenfit Validator! We welcome cont
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/yourusername/wenfit-validator.git
+   git clone https://github.com/Hailemariyam/wenfit-validator.git
    cd wenfit-validator
    ```
 
@@ -257,9 +257,9 @@ We especially welcome contributions in:
 
 ## 💬 Questions?
 
-- Open a [GitHub Discussion](https://github.com/yourusername/wenfit-validator/discussions)
-- Join our [Discord community](https://discord.gg/wenfit)
-- Check existing [issues](https://github.com/yourusername/wenfit-validator/issues)
+- Open a [GitHub Discussion](https://github.com/Hailemariyam/wenfit-validator/discussions)
+- Join our [Discord community](https://discord.gg/zZQze3rn)
+- Check existing [issues](https://github.com/Hailemariyam/wenfit-validator/issues)
 
 ## 📜 Code of Conduct
 

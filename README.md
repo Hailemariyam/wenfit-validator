@@ -7,6 +7,7 @@
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/wenfit-validator)](https://bundlephobia.com/package/wenfit-validator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/Hailemariyam?style=social)](https://github.com/sponsors/Hailemariyam)
 
 ## ✨ Why Wenfit Validator?
 
@@ -543,6 +544,34 @@ MIT © Wenfit Team
 ## 🌟 Show Your Support
 
 If you find Wenfit Validator helpful, please give it a ⭐️ on [GitHub](https://github.com/Hailemariyam/wenfit-validator)!
+
+### 💖 Sponsor This Project
+
+Wenfit Validator is **free and open-source**. Your sponsorship helps maintain and improve the project:
+
+- 🚀 New features and improvements
+- 📚 Better documentation and examples
+- 🐛 Quick bug fixes and security patches
+- 💬 Community support
+
+**[Become a Sponsor](https://github.com/sponsors/Hailemariyam)** and get:
+- Priority support
+- Your logo in the README
+- Early access to new features
+- Direct communication channel
+
+[View Sponsorship Tiers](./.github/SPONSORS.md)
+
+### Current Sponsors
+
+#### 🥇 Gold Sponsors
+*Be the first Gold Sponsor and get your logo here!*
+
+#### 🥈 Silver Sponsors
+*Be the first Silver Sponsor!*
+
+#### 🌟 Bronze Sponsors
+*Be the first Bronze Sponsor!*
 
 ---
 

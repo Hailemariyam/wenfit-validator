@@ -1,10 +1,3 @@
-<!--
-  Vue Form Validation Example
-
-  This example demonstrates how to use Wenfit Validator with Vue
-  for form validation with real-time feedback.
--->
-
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useValidation } from 'wenfit-validator/adapters/vue';
